@@ -5,7 +5,9 @@ import cartReducer from "../reducers/cart";
 import {postOrderEpic, saveStateToLocalStorageEpic} from "../epics";
 import postOrderReducer from "../reducers/postOrder";
 
-const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {};
+const persistedState = localStorage.getItem('reduxState') ?
+    JSON.parse(localStorage.getItem('reduxState'))
+    : {};
 
 const reducer = combineReducers({
     catalogFilter: catalogFilterReducer,

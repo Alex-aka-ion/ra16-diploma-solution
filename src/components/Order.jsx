@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 
 export default function Order() {
     const items = useSelector(state => state.cart);
-    const {loading, error, success} = useSelector(state => state.postOrder);
+    const {loading, error} = useSelector(state => state.postOrder);
     const dispatch = useDispatch();
 
     const [phone, setPhone] = useState('');
@@ -51,8 +51,9 @@ export default function Order() {
                         <label className="form-check-label" htmlFor="agreement">Согласен с правилами
                             доставки</label>
                     </div>
-                    <button type="submit" className="btn btn-outline-secondary"
-                            disabled={!agreement && !loading}>{loading ? <Spinner/> : 'Оформить'}</button>
+                    {loading ? <Spinner/> :
+                        <button type="submit" className="btn btn-outline-secondary"
+                                disabled={!agreement}>Оформить</button>}
                 </form>
                 {error && <div className="text-center">{error}</div>}
             </div>

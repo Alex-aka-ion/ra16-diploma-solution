@@ -1,11 +1,10 @@
 import Spinner from "./Spinner";
 import useFetch from "../hooks/useFetch";
 import Item from "./Item";
+import React from "react";
 
 export default function TopSales() {
     const [items, loading, error] = useFetch('top-sales', []);
-
-    console.log(items);
 
     if (items && items.length === 0)
         return null;

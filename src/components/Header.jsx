@@ -12,13 +12,11 @@ export default function Header() {
                         <Link className="navbar-brand" to="/">
                             <img src="/img/header-logo.png" alt="Bosa Noga"/>
                         </Link>
-
                         <div className="collapase navbar-collapse" id="navbarMain">
                             <MenuInHeader/>
                             <SearchInHeader/>
                         </div>
                     </nav>
-
                 </div>
             </div>
         </header>

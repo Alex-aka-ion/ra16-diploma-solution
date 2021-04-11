@@ -10,6 +10,8 @@ export default function Catalog({showSearch = true}) {
     const {categoryId, search} = useSelector(state => state.catalogFilter);
     const dispatch = useDispatch();
 
+    const [step] = useState(6);
+
     const [filters] = useFetch('categories', []);
 
     const showedFilters = [
@@ -27,7 +29,8 @@ export default function Catalog({showSearch = true}) {
         })}`,
         [],
         true,
-        offset
+        offset,
+        step
     );
 
     const [localSearch, setLocalSearch] = useState(search);
@@ -39,7 +42,6 @@ export default function Catalog({showSearch = true}) {
     }
 
     const handleSearchSubmit = (e) => {
-        console.log('submit', localSearch);
         e.preventDefault();
         dispatch(changeSearchFilter(localSearch));
     }
@@ -58,10 +60,10 @@ export default function Catalog({showSearch = true}) {
             {loading ?
                 <Spinner/> :
                 !finish && <div className="text-center">
-                    <button className="btn btn-outline-primary" onClick={() => setOffset(offset + 6)}>Загрузить ещё</button>
+                    <button className="btn btn-outline-primary" onClick={() => setOffset(offset + step)}>Загрузить ещё
+                    </button>
                 </div>}
-            {error ? error : ''}
-
+            {error && <div className="text-center">{error}</div>}
         </section>
     );
 }

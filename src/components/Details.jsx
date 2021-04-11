@@ -29,7 +29,6 @@ export default function Details() {
     }
 
     const handleAddToCart = (id, size, price, quantity, title) => {
-        console.log('addtoCart', id, size)
         dispatch(addToCart(id, size, price, quantity, title));
         history.push('/cart.html');
     }
@@ -40,7 +39,9 @@ export default function Details() {
         return <section className="catalog-item"><Spinner/></section>;
 
     if (error)
-        return <p>{error}</p>;
+        return <section className="catalog-item">
+            <div className="text-center">{error}</div>
+        </section>;
 
     if (!item)
         return null;
@@ -90,14 +91,14 @@ export default function Details() {
                             .map(o => <span key={o.size}
                                             className={`catalog-item-size${o.size === selected ? ' selected' : ''}`}
                                             onClick={() => handleSelected(o.size)}>{o.size}</span>)}</p>
-                        {sizes.length && <p>Количество: <span className="btn-group btn-group-sm pl-2">
+                        {sizes && sizes.length > 0 && <p>Количество: <span className="btn-group btn-group-sm pl-2">
                                         <button className="btn btn-secondary" onClick={handleDecrease}>-</button>
                                         <span className="btn btn-outline-primary">{quantity}</span>
                                         <button className="btn btn-secondary" onClick={handleIncrease}>+</button>
                                     </span></p>}
                         <p>Цена: {price} руб.</p>
                     </div>
-                    {sizes.length &&
+                    {sizes.length > 0 &&
                     <button className="btn btn-danger btn-block btn-lg" disabled={!selected}
                             onClick={() => handleAddToCart(id, selected, price, quantity, title)}>В корзину</button>
                     }

@@ -3,18 +3,17 @@ import {POST_ORDER_FAILURE, POST_ORDER_REQUEST, POST_ORDER_SUCCESS} from "../act
 const initialState = {
     body: {},
     loading: false,
-    error: null,
-    success: false
+    error: null
 }
 
 export default function postOrderReducer(state = initialState, action) {
     switch (action.type) {
         case POST_ORDER_REQUEST:
-            return {...state, body: action.payload.body, loading: true, error: null, success: false}
+            return {...state, body: action.payload.body, loading: true, error: null}
         case POST_ORDER_FAILURE:
-            return {...state, loading: false, error: action.payload.error.message, success: false}
+            return {...state, loading: false, error: action.payload.error.message}
         case POST_ORDER_SUCCESS:
-            return {...state, body: {}, loading: false, error: null, success: true}
+            return {...state, body: {}, loading: false, error: null}
         default:
             return state;
     }

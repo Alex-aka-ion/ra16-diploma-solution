@@ -8,7 +8,6 @@ export default function Cart() {
     const items = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
-    console.log('items in cart', items)
     const itemsSum = items.reduce((a, o) => a + o.price * o.quantity, 0);
 
     const handleDelete = (id, size) => {
@@ -52,7 +51,7 @@ export default function Cart() {
                     </tbody>
                 </table> : <div className="text-center">В корзине ничего нет!</div>}
             </section>
-            {items.length ? <Order/> : ''}
+            {items.length > 0 && <Order/>}
         </>
     );
 }

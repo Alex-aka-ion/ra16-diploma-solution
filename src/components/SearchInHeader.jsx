@@ -49,7 +49,7 @@ export default function SearchInHeader() {
                 <CartInHeader/>
             </div>
             <form onSubmit={handleSubmit} data-id="search-form"
-                  className={`header-controls-search-form form-inline ${!expanded ? 'invisible' : ''}`}>
+                  className={`header-controls-search-form form-inline ${!expanded && 'invisible'}`}>
                 <input className="form-control" placeholder="Поиск" onChange={handleChange} value={localSearch}/>
             </form>
         </div>
