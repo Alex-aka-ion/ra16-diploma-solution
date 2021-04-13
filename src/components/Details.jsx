@@ -5,6 +5,7 @@ import Spinner from "./Spinner";
 import {addToCart} from "../actions/actionCreators";
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom';
+import SafeImage from "./SafeImage";
 
 export default function Details() {
     const {id} = useParams();
@@ -53,8 +54,8 @@ export default function Details() {
             <h2 className="text-center">{title}</h2>
             <div className="row">
                 <div className="col-5">
-                    <img src={images[0]}
-                         className="img-fluid" alt={title}/>
+                    <SafeImage src={images[0]}
+                               className="img-fluid" alt={title}/>
                 </div>
                 <div className="col-7">
                     <table className="table table-bordered">
